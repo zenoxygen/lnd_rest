@@ -1,0 +1,21 @@
+[package]
+name = "lnd_rest"
+version = "0.1.0"
+authors = ["zenoxygen <zenoxygen@protonmail.com>"]
+edition = "2021"
+
+description = "Rust wrapper to interact with the REST API of a Lightning Network Daemon node."
+homepage = "https://github.com/zenoxygen/lnd_rust"
+repository = "https://github.com/zenoxygen/lnd_rust"
+
+keywords = ["lnd", "rest", "api", "lightning", "bitcoin"]
+categories = ["api-bindings"]
+readme = "README.md"
+license = "MIT"
+
+[dependencies]
+async-trait = { version = "^0.1.71" }
+serde = { version = "^1.0.166", features = ["derive"] }
+serde_json = "^1.0.100"
+reqwest = { version = "^0.11.18", features = ["json", "native-tls"] }
+thiserror = { version = "^1.0.41" }
