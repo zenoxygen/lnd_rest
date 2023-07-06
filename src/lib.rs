@@ -8,7 +8,7 @@
 //!
 //! ```ini
 //! [dependencies]
-//! lnd_rest = "0.1.0"
+//! lnd_rest = "0.1.1"
 //! ```
 
 pub mod node;
