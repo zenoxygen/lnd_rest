@@ -18,7 +18,7 @@ pub enum InvoiceState {
     ACCEPTED = 3,
 }
 
-/// See [LND API documentation](https://api.lightning.community/api/lnd/lightning/add-invoice#lnrpcinvoice)
+/// See [LND API documentation](https://api.lightning.community/api/lnd/lightning/add-invoice#lnrpcinvoice).
 #[derive(Debug, Serialize)]
 pub struct AddInvoiceRequest {
     pub memo: Option<String>,
@@ -30,7 +30,7 @@ pub struct AddInvoiceRequest {
     pub cltv_expiry: Option<i32>,
 }
 
-/// See [LND API documentation](https://api.lightning.community/api/lnd/lightning/add-invoice#lnrpcaddinvoiceresponse)
+/// See [LND API documentation](https://api.lightning.community/api/lnd/lightning/add-invoice#lnrpcaddinvoiceresponse).
 #[derive(Debug, Deserialize)]
 pub struct AddInvoiceResponse {
     pub r_hash: Base64String,
@@ -39,7 +39,7 @@ pub struct AddInvoiceResponse {
     pub payment_addr: Base64String,
 }
 
-/// See [LND API documentation](https://api.lightning.community/api/lnd/lightning/lookup-invoice#lnrpcinvoice)
+/// See [LND API documentation](https://api.lightning.community/api/lnd/lightning/lookup-invoice#lnrpcinvoice).
 #[derive(Debug, Deserialize, Clone)]
 pub struct LookupInvoiceResponse {
     pub memo: String,
@@ -55,7 +55,7 @@ pub struct LookupInvoiceResponse {
     pub state: InvoiceState,
 }
 
-/// See [LND API documentation](https://api.lightning.community/api/lnd/lightning/send-payment-sync#lnrpcfeelimit)
+/// See [LND API documentation](https://api.lightning.community/api/lnd/lightning/send-payment-sync#lnrpcfeelimit).
 #[derive(Debug, Serialize)]
 pub struct FeeLimit {
     pub fixed: Option<String>,
@@ -63,7 +63,7 @@ pub struct FeeLimit {
     pub percent: Option<String>,
 }
 
-/// See [LND API documentation](https://api.lightning.community/api/lnd/lightning/send-payment-sync#lnrpcsendrequest)
+/// See [LND API documentation](https://api.lightning.community/api/lnd/lightning/send-payment-sync#lnrpcsendrequest).
 #[derive(Debug, Serialize)]
 pub struct SendPaymentSyncRequest {
     pub dest: Option<Base64String>,
@@ -81,14 +81,14 @@ pub struct SendPaymentSyncRequest {
     pub payment_addr: Option<Base64String>,
 }
 
-/// See [LND API documentation](https://api.lightning.community/api/lnd/lightning/send-payment-sync#lnrpcmpprecord)
+/// See [LND API documentation](https://api.lightning.community/api/lnd/lightning/send-payment-sync#lnrpcmpprecord).
 #[derive(Debug, Deserialize)]
 pub struct MppRecord {
     pub payment_addr: Base64String,
     pub total_amt_msat: String,
 }
 
-/// See [LND API documentation](https://api.lightning.community/api/lnd/lightning/send-payment-sync#lnrpcamprecord)
+/// See [LND API documentation](https://api.lightning.community/api/lnd/lightning/send-payment-sync#lnrpcamprecord).
 #[derive(Debug, Deserialize)]
 pub struct AmpRecord {
     pub root_share: Base64String,
@@ -96,7 +96,7 @@ pub struct AmpRecord {
     pub child_index: i64,
 }
 
-/// See [LND API documentation](https://api.lightning.community/api/lnd/lightning/send-payment-sync#lnrpchop)
+/// See [LND API documentation](https://api.lightning.community/api/lnd/lightning/send-payment-sync#lnrpchop).
 #[derive(Debug, Deserialize)]
 pub struct Hop {
     pub chan_id: String,
@@ -114,7 +114,7 @@ pub struct Hop {
     pub metadata: Base64String,
 }
 
-/// See [LND API documentation](https://api.lightning.community/api/lnd/lightning/send-payment-sync#lnrpcroute)
+/// See [LND API documentation](https://api.lightning.community/api/lnd/lightning/send-payment-sync#lnrpcroute).
 #[derive(Debug, Deserialize)]
 pub struct Route {
     pub total_time_lock: i64,
@@ -125,7 +125,7 @@ pub struct Route {
     pub hops: Vec<Hop>,
 }
 
-/// See [LND API documentation](https://api.lightning.community/api/lnd/lightning/send-payment-sync#lnrpcsendresponse)
+/// See [LND API documentation](https://api.lightning.community/api/lnd/lightning/send-payment-sync#lnrpcsendresponse).
 #[derive(Debug, Deserialize)]
 pub struct SendPaymentSyncResponse {
     pub payment_error: String,
