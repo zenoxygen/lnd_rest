@@ -5,8 +5,8 @@ authors = ["zenoxygen <zenoxygen@protonmail.com>"]
 edition = "2021"
 
 description = "Rust wrapper to interact with the REST API of a Lightning Network Daemon node."
-homepage = "https://github.com/zenoxygen/lnd_rust"
-repository = "https://github.com/zenoxygen/lnd_rust"
+homepage = "https://github.com/zenoxygen/lnd_rest"
+repository = "https://github.com/zenoxygen/lnd_rest"
 
 keywords = ["lnd", "rest", "api", "lightning", "bitcoin"]
 categories = ["api-bindings"]
