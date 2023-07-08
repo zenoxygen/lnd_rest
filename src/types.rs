@@ -19,7 +19,7 @@ pub enum InvoiceState {
 }
 
 /// See [LND API documentation](https://api.lightning.community/api/lnd/lightning/add-invoice#lnrpcinvoice).
-#[derive(Debug, Serialize)]
+#[derive(Debug, Default, Serialize)]
 pub struct AddInvoiceRequest {
     pub memo: Option<String>,
     pub r_preimage: Option<String>,
@@ -64,7 +64,7 @@ pub struct FeeLimit {
 }
 
 /// See [LND API documentation](https://api.lightning.community/api/lnd/lightning/send-payment-sync#lnrpcsendrequest).
-#[derive(Debug, Serialize)]
+#[derive(Debug, Default, Serialize)]
 pub struct SendPaymentSyncRequest {
     pub dest: Option<Base64String>,
     pub amt: Option<String>,
