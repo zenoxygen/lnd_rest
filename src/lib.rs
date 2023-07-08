@@ -4,11 +4,10 @@
 //!
 //! ## Usage
 //!
-//! Add to your `Cargo.toml` manifest:
+//! Add package to your `Cargo.toml` manifest:
 //!
-//! ```ini
-//! [dependencies]
-//! lnd_rest = "0.1.1"
+//! ```
+//! cargo add lnd_rest
 //! ```
 
 pub mod node;

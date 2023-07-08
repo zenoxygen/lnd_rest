@@ -38,7 +38,7 @@ pub struct Node {
 }
 
 impl Node {
-    /// Initialize a [Node] object using and the macaroon and certificate files provided.
+    /// Initialize a [Node] object using the macaroon and certificate files provided.
     ///
     /// # Arguments
     ///
