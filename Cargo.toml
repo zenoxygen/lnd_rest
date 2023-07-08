@@ -1,6 +1,6 @@
 [package]
 name = "lnd_rest"
-version = "0.1.1"
+version = "0.2.0"
 authors = ["zenoxygen <zenoxygen@protonmail.com>"]
 edition = "2021"
 
