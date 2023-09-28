@@ -7,8 +7,8 @@ use reqwest::Client;
 use thiserror::Error;
 
 use crate::types::{
-    AddInvoiceRequest, AddInvoiceResponse, LookupInvoiceResponse, SendPaymentSyncRequest,
-    SendPaymentSyncResponse,
+    AddInvoiceRequest, AddInvoiceResponse, ListPaymentsRequest, ListPaymentsResponse,
+    LookupInvoiceResponse, SendPaymentSyncRequest, SendPaymentSyncResponse,
 };
 
 /// Make it easier to handle and propagate errors using the NodeError enum as the error type.
@@ -159,6 +159,37 @@ impl Node {
         response = Self::on_response(response).await?;
 
         let data: SendPaymentSyncResponse = response.json().await?;
+
+        Ok(data)
+    }
+
+    /// Send a GET request to retrieve a list of all outgoing payments.
+    ///
+    /// # Arguments
+    ///
+    /// * `list_payments_request` - A reference to a [ListPaymentsRequest] object containing the parameters of the request.
+    ///
+    pub async fn list_payments(
+        &self,
+        list_payments_request: &ListPaymentsRequest,
+    ) -> Result<ListPaymentsResponse> {
+        let url = format!(
+        "{host}/v1/payments?include_incomplete={include_incomplete}&index_offset={index_offset}&max_payments={max_payments}&reversed={reversed}&count_total_payments={count_total_payments}&creation_date_start={creation_date_start}&creation_date_end={creation_date_end}",
+        host = self.host,
+        include_incomplete = list_payments_request.include_incomplete,
+        index_offset = list_payments_request.index_offset,
+        max_payments = list_payments_request.max_payments,
+        reversed = list_payments_request.reversed,
+        count_total_payments = list_payments_request.count_total_payments,
+        creation_date_start = list_payments_request.creation_date_start,
+        creation_date_end = list_payments_request.creation_date_end
+    );
+
+        let mut response = self.client.get(&url).send().await?;
+
+        response = Self::on_response(response).await?;
+
+        let data: ListPaymentsResponse = response.json().await?;
 
         Ok(data)
     }
