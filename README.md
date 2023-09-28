@@ -28,14 +28,14 @@ async fn main() {
 
     let node = Node::init(host, macaroon_path, cert_path).await.unwrap();
 
-    let invoice_request = AddInvoiceRequest {
+    let add_invoice_request = AddInvoiceRequest {
         value_msat: 1000, // Set the invoice value in millisatoshis
         expiry: 3600, // Set the expiry time in seconds
         // Set other fields as needed
         ..Default::default()
     };
 
-    let add_invoice_response = node.add_invoice(&invoice_request).await;
+    let add_invoice_response = node.add_invoice(&add_invoice_request).await;
 
     match add_invoice_response {
         Ok(response) => {
@@ -107,6 +107,42 @@ async fn main() {
         }
         Err(err) => {
             eprintln!("Error paying invoice: {}", err);
+        }
+    }
+}
+```
+
+### List payments
+
+```rust
+use lnd_rest::node::Node;
+use lnd_rest::types::ListPaymentsRequest;
+
+#[tokio::main]
+async fn main() {
+    let host = "your_lnd_host".to_string();
+    let macaroon_path = "path/to/macaroon".to_string();
+    let cert_path = "path/to/cert".to_string();
+
+    let node = Node::init(host, macaroon_path, cert_path).await.unwrap();
+
+    let list_payments_request = ListPaymentsRequest {
+        include_incomplete: true, // Include incomplete payments
+        // Set other fields as needed
+        ..Default::default()
+    };
+
+    let list_payments_response = node.list_payments(&list_payments_request).await;
+
+    match list_payments_response {
+        Ok(response) => {
+            for payment in response.payments {
+                println!("Payment hash: {}", payment.payment_hash);
+                // Access other fields as needed
+            }
+        }
+        Err(err) => {
+            eprintln!("Error listing payments: {}", err);
         }
     }
 }
