@@ -132,12 +132,7 @@ impl Node {
 
         response = Self::on_response(response).await?;
 
-        let data: LookupInvoiceResponse = match response.json().await {
-            Ok(data) => data,
-            Err(err) => {
-                return Err(err.into());
-            }
-        };
+        let data: LookupInvoiceResponse = response.json().await?;
 
         Ok(data)
     }
