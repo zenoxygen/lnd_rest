@@ -18,13 +18,13 @@ pub type Result<T> = std::result::Result<T, NodeError>;
 #[derive(Error, Debug)]
 pub enum NodeError {
     /// An I/O error occurred.
-    #[error("I/O error")]
+    #[error("I/O error: {0}")]
     IoError(#[from] std::io::Error),
     /// An error occurred while making a request.
-    #[error("Request error")]
+    #[error("Request error: {0}")]
     RequestError(#[from] reqwest::Error),
     /// The request header contained an invalid value.
-    #[error("Request header error")]
+    #[error("Invalid request header value: {0}")]
     RequestHeaderError(#[from] reqwest::header::InvalidHeaderValue),
 }
 
